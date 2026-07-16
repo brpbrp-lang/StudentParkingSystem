@@ -3,11 +3,8 @@ package com.parking.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-/**
- * Handles the single JDBC connection to the MySQL "parking_system" database.
- * Update HOST / PORT / DB_NAME / USER / PASSWORD to match your local MySQL setup.
- */
+//Connects the application to the MySQL parking system database.
+//Change the database details below to match your own MySQL setup.
 public class DBConnection {
 
     private static final String HOST = "localhost";
@@ -18,17 +15,16 @@ public class DBConnection {
             "?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
 
     private static final String USER = "root";
-    private static final String PASSWORD = ""; // <-- set your MySQL root password here
+    private static final String PASSWORD = ""; //
 
     private static Connection connection;
 
     private DBConnection() {
     }
 
-    /**
-     * Returns a live JDBC connection, opening a new one if needed
-     * (or if the previous one was closed).
-     */
+    // Connects to the database.
+    // If the connection is already open, it uses it.
+    // Otherwise, it creates a new one.
     public static Connection getConnection() throws SQLException {
         if (connection == null || connection.isClosed()) {
             try {

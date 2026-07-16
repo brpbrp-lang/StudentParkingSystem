@@ -2,10 +2,8 @@ package com.parking.controller;
 
 import com.parking.model.Administrator;
 
-/**
- * Tiny in-memory session holder so any controller can know who is logged in
- * without re-querying the database or passing objects through every FXMLLoader call.
- */
+//Manages the current user session for the application
+//is like temporary ID holder for the administrator who is currently using the system.
 public final class Session {
 
     private static Administrator currentAdmin;

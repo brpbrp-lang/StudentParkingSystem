@@ -1,9 +1,6 @@
 package com.parking.model;
 
-/**
- * Abstract base class for any user of the system (currently only Administrator,
- * but kept abstract to allow future roles).
- */
+
 public abstract class User {
 
     protected String userID;

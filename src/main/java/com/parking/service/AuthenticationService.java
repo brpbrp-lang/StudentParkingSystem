@@ -13,13 +13,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Handles: Administrator login, and the Scanner Kiosk verification chain
- * (verifyQR -> verifyVehicle -> checkActiveEntry).
- */
+
 public class AuthenticationService {
 
-    /** Hashes a plain-text password using SHA-256 (hex string). */
+
     public static String hash(String plainText) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -34,10 +31,6 @@ public class AuthenticationService {
         }
     }
 
-    /**
-     * Validates administrator credentials against the database.
-     * @return an Administrator object if valid, otherwise null.
-     */
     public Administrator authenticate(String username, String password) {
         String sql = "SELECT admin_id, username FROM administrator WHERE username = ? AND password = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -63,11 +56,7 @@ public class AuthenticationService {
         return null;
     }
 
-    /**
-     * Step 1 of the scanner workflow: verify the scanned QR code corresponds to a
-     * registered student.
-     * @return the matching Student, or null if the QR code is invalid / unregistered.
-     */
+
     public Student verifyQR(String qrCode) {
         // Our QR codes simply encode the studentID.
         String sql = "SELECT * FROM student WHERE student_id = ?";
@@ -93,10 +82,6 @@ public class AuthenticationService {
         return null;
     }
 
-    /**
-     * Step 2: verify the student has at least one registered vehicle.
-     * @return the student's first registered vehicle, or null if none is registered.
-     */
     public Vehicle verifyVehicle(String studentID) {
         String sql = "SELECT * FROM vehicle WHERE student_id = ? LIMIT 1";
         try (Connection conn = DBConnection.getConnection();
@@ -121,11 +106,7 @@ public class AuthenticationService {
         return null;
     }
 
-    /**
-     * Step 3: check whether the student currently has an open (no time-out) parking log,
-     * meaning they are already inside campus.
-     * @return the open ParkingLog if the student is inside, otherwise null.
-     */
+
     public ParkingLog checkActiveEntry(String studentID) {
         String sql = "SELECT * FROM parking_log WHERE student_id = ? AND status = 'ENTRY' " +
                      "ORDER BY log_id DESC LIMIT 1";

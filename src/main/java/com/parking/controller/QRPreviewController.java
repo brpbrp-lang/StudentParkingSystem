@@ -31,9 +31,7 @@ public class QRPreviewController {
 
     private Student student;
 
-    /**
-     * Receives the student information from the previous screen.
-     */
+    //Receives the student information
     public void setData(Student student) {
 
         this.student = student;
@@ -57,9 +55,7 @@ public class QRPreviewController {
 
     }
 
-    /**
-     * Prints the entire parking pass.
-     */
+    //Prints the entire parking pass.
     @FXML
     private void printQR() {
 
@@ -89,9 +85,8 @@ public class QRPreviewController {
 
     }
 
-    /**
-     * Closes the preview window.
-     */
+
+    //Closes the preview window.
     @FXML
     private void close() {
 

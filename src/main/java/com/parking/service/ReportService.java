@@ -17,10 +17,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Uses a ReportGenerator strategy (Daily/Weekly/Monthly) to pull data, then exports
- * the resulting ParkingLog list to either PDF (Apache PDFBox) or Excel (Apache POI).
- */
+
 public class ReportService {
 
     private static final String EXPORT_FOLDER = "src/main/resources/exports/";
@@ -29,7 +26,7 @@ public class ReportService {
         return generator.generateReport();
     }
 
-    /** Exports the given logs to a PDF file. Returns the absolute path of the created file. */
+
     public String exportToPDF(List<ParkingLog> logs, String reportLabel) throws IOException {
         ensureExportFolder();
         String filePath = EXPORT_FOLDER + reportLabel + ".pdf";
@@ -103,7 +100,7 @@ public class ReportService {
         return filePath;
     }
 
-    /** Exports the given logs to an Excel (.xlsx) file. Returns the absolute path of the created file. */
+
     public String exportToExcel(List<ParkingLog> logs, String reportLabel) throws IOException {
         ensureExportFolder();
         String filePath = EXPORT_FOLDER + reportLabel + ".xlsx";

@@ -13,21 +13,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * The Scanner Kiosk in this project is a USB / hardware QR scanner, which behaves like
- * a keyboard and simply "types" the QR content into a focused text field followed by Enter
- * (handled directly in ScannerController).
- *
- * This class provides an additional, optional decode path: reading a QR code from an
- * image file (e.g. if the kiosk uses a camera snapshot instead of a laser/keyboard scanner).
- */
 public class QRScanner {
 
-    /**
-     * Decodes the QR code text from an image file.
-     * @param imageFile the QR code image to decode
-     * @return the decoded text, or null if no QR code could be found
-     */
     public static String decodeQRFromImage(File imageFile) {
         try {
             BufferedImage bufferedImage = ImageIO.read(imageFile);

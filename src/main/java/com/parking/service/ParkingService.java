@@ -13,13 +13,10 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Handles creation and updating of ParkingLog records for the Scanner Kiosk workflow,
- * as well as general log queries used by the Parking Logs and Reports modules.
- */
+
 public class ParkingService {
 
-    /** Creates a new ENTRY log for a student/vehicle pair. */
+    // Creates a new ENTRY log for a student/vehicle pair.
     public boolean recordEntry(String studentID, int vehicleID) {
         String sql = "INSERT INTO parking_log (student_id, vehicle_id, date, time_in, status) " +
                      "VALUES (?, ?, ?, ?, ?)";
@@ -38,8 +35,7 @@ public class ParkingService {
             return false;
         }
     }
-
-    /** Closes an open log by recording the time-out and marking it as EXIT. */
+    //Closes an open log by recording the time-out and marking it as EXIT.
     public boolean recordExit(int logID) {
         String sql = "UPDATE parking_log SET time_out = ?, status = ? WHERE log_id = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -56,7 +52,7 @@ public class ParkingService {
         }
     }
 
-    /** Generic status updater, kept for UML completeness / manual admin correction of logs. */
+
     public boolean updateStatus(int logID, String status) {
         String sql = "UPDATE parking_log SET status = ? WHERE log_id = ?";
         try (Connection conn = DBConnection.getConnection();
@@ -71,7 +67,7 @@ public class ParkingService {
         }
     }
 
-    /** Returns all parking logs (joined with student name / plate number), most recent first. */
+    //Returns all parking logs
     public List<ParkingLog> getAllLogs() {
         return runLogQuery("SELECT pl.*, s.name AS student_name, v.plate_number FROM parking_log pl " +
                 "JOIN student s ON pl.student_id = s.student_id " +
@@ -79,7 +75,7 @@ public class ParkingService {
                 "ORDER BY pl.log_id DESC", null);
     }
 
-    /** Filters logs by exact date. */
+    //Filters logs by exact date
     public List<ParkingLog> getLogsByDate(LocalDate date) {
         return runLogQuery("SELECT pl.*, s.name AS student_name, v.plate_number FROM parking_log pl " +
                 "JOIN student s ON pl.student_id = s.student_id " +
@@ -87,7 +83,7 @@ public class ParkingService {
                 "WHERE pl.date = ? ORDER BY pl.log_id DESC", java.sql.Date.valueOf(date));
     }
 
-    /** Filters logs by student ID or name (partial match). */
+    //Filters logs by student ID or name
     public List<ParkingLog> getLogsByStudent(String keyword) {
         String sql = "SELECT pl.*, s.name AS student_name, v.plate_number FROM parking_log pl " +
                 "JOIN student s ON pl.student_id = s.student_id " +
@@ -130,7 +126,7 @@ public class ParkingService {
         return logs;
     }
 
-    /** Logs between two dates inclusive (used by Reports module). */
+    // Logs between two dates inclusive
     public List<ParkingLog> getLogsBetween(LocalDate start, LocalDate end) {
         String sql = "SELECT pl.*, s.name AS student_name, v.plate_number FROM parking_log pl " +
                 "JOIN student s ON pl.student_id = s.student_id " +

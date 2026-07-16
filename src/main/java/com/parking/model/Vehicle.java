@@ -21,7 +21,7 @@ public class Vehicle {
         this.type = type;
     }
 
-    /** Placeholder to satisfy UML; actual persistence is done via VehicleController + DBConnection. */
+
     public void updateVehicle() {
         // Intentionally left for the controller/service layer to perform the DB update.
     }

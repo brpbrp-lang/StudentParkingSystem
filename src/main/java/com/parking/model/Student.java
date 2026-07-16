@@ -26,13 +26,13 @@ public class Student {
         this.qrCode = qrCode;
     }
 
-    /** Generates (or regenerates) this student's QR code image on disk. */
+
     public String generateQR() {
         this.qrCode = com.parking.util.QRGenerator.generateQRCode(studentID);
         return this.qrCode;
     }
 
-    /** Attaches a vehicle to this student's in-memory vehicle list (persistence handled by controller). */
+
     public void registerVehicle(Vehicle vehicle) {
         vehicles.add(vehicle);
     }

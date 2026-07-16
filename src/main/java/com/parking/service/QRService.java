@@ -7,9 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-/**
- * Generates a student's QR code and persists the resulting file path to the database.
- */
+
+ // Generates a student's QR code and persists the resulting file path to the database.
 public class QRService {
 
     public String generateAndSaveQRCode(String studentID) {

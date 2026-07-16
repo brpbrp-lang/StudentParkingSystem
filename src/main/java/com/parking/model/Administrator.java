@@ -1,9 +1,5 @@
 package com.parking.model;
 
-/**
- * Represents the Administrator role. Actual CRUD / report operations are delegated
- * to the controller + service layer; this class mainly models session identity.
- */
 public class Administrator extends User {
 
     private boolean loggedIn = false;
