@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.ImageView?>
+
+
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.parking.controller.ScannerController"
+           styleClass="kiosk-root">
+
+    <VBox alignment="CENTER" spacing="24" styleClass="kiosk-card" maxWidth="600">
+        <padding>
+            <Insets top="50" bottom="50" left="50" right="50"/>
+        </padding>
+
+        <Label text="🅿️ SCANNER KIOSK" styleClass="kiosk-title"/>
+
+        <VBox alignment="CENTER" spacing="10" styleClass="kiosk-scan-area">
+
+            <ImageView fx:id="cameraView"
+                       fitWidth="500"
+                       fitHeight="320"
+                       preserveRatio="true"/>
+
+            <Label text="Point the QR Code toward the camera"
+                   styleClass="kiosk-instruction"/>
+
+        </VBox>
+
+
+        <Label fx:id="statusLabel" text="Ready to Scan" styleClass="ready-status kiosk-status"/>
+        <Label fx:id="detailLabel" text="Scan your Student QR Code to continue." wrapText="true" styleClass="kiosk-detail"/>
+
+        <!-- Hidden-in-plain-sight input: a USB QR scanner acts like a keyboard and types
+             here automatically, followed by Enter. Kept visible + focused for kiosk operators
+             who may need to type an ID manually as a fallback. -->
+        <TextField fx:id="qrInputField"
+                   promptText="Scan QR code here..."
+                   onAction="#handleScan"
+                   styleClass="kiosk-input"
+                   visible="false"
+                   managed="false"/>
+    </VBox>
+
+</StackPane>

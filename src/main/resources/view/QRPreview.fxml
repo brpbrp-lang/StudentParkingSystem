@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.parking.controller.QRPreviewController"
+      fx:id="rootVBox"
+      alignment="CENTER"
+      spacing="20">
+
+    <padding>
+        <Insets top="20" bottom="20" left="20" right="20"/>
+    </padding>
+
+    <Label text="Student QR Code"
+           style="-fx-font-size:20px; -fx-font-weight:bold;"/>
+
+    <ImageView
+            fx:id="qrImage"
+            fitWidth="250"
+            fitHeight="250"
+            preserveRatio="true"/>
+
+    <Label fx:id="studentLabel"/>
+
+    <HBox alignment="CENTER" spacing="15">
+
+        <Button text="Save As..."
+                onAction="#handleSaveAs"/>
+
+        <Button
+                text="Print QR"
+                onAction="#printQR"/>
+
+        <Button
+                text="Close"
+                onAction="#close"/>
+
+    </HBox>
+
+</VBox>

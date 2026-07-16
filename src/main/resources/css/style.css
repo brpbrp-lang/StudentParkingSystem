@@ -1,0 +1,212 @@
+/* ===== Color palette =====
+   Primary:   #2563eb (blue)
+   Dark:      #1e293b
+   Success:   #16a34a
+   Danger:    #dc2626
+   Background:#f1f5f9
+*/
+
+.login-root {
+    -fx-background-color: linear-gradient(to bottom right, #1e293b, #2563eb);
+}
+
+.login-card {
+    -fx-background-color: white;
+    -fx-background-radius: 14;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.35), 20, 0, 0, 8);
+}
+
+.login-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-text-fill: #1e293b;
+}
+
+.login-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #64748b;
+}
+
+.hint-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #94a3b8;
+}
+
+.error-label {
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 12px;
+}
+
+.primary-button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+
+.primary-button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.danger-button {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+
+.danger-button:hover {
+    -fx-background-color: #b91c1c;
+}
+
+.app-root {
+    -fx-background-color: #f1f5f9;
+}
+
+.sidebar {
+    -fx-background-color: #1e293b;
+}
+
+.sidebar-title {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #cbd5e1;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 10 10 10;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: #334155;
+    -fx-text-fill: white;
+}
+
+.nav-button-danger {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f87171;
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 10 10 10;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.nav-button-danger:hover {
+    -fx-background-color: #7f1d1d;
+    -fx-text-fill: white;
+}
+
+.content-area {
+    -fx-background-color: #f1f5f9;
+}
+
+.page-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+}
+
+.stat-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 18;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+}
+
+.stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #64748b;
+}
+
+.stat-value {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563eb;
+}
+
+.form-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10;
+    -fx-padding: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2);
+}
+
+/* ===== Scanner Kiosk ===== */
+
+.kiosk-root {
+    -fx-background-color: linear-gradient(to bottom right, #0f172a, #1e3a8a);
+}
+
+.kiosk-card {
+    -fx-background-color: white;
+    -fx-background-radius: 16;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 24, 0, 0, 10);
+}
+
+.kiosk-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+}
+
+.kiosk-scan-area {
+    -fx-background-color: #f1f5f9;
+    -fx-background-radius: 10;
+    -fx-border-color: #cbd5e1;
+    -fx-border-style: dashed;
+    -fx-border-radius: 10;
+    -fx-border-width: 2;
+}
+
+.kiosk-icon {
+    -fx-font-size: 40px;
+}
+
+.kiosk-instruction {
+    -fx-text-fill: #64748b;
+}
+
+.kiosk-status {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.kiosk-detail {
+    -fx-text-fill: #475569;
+    -fx-text-alignment: center;
+}
+
+.kiosk-input {
+    -fx-font-size: 14px;
+    -fx-padding: 8;
+}
+
+.ready-status {
+    -fx-text-fill: #2563eb;
+}
+
+.error-status {
+    -fx-text-fill: #dc2626;
+}
+
+.success-status {
+    -fx-text-fill: #16a34a;
+}
