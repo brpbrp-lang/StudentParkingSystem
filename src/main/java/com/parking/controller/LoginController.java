@@ -51,7 +51,7 @@ public class LoginController {
 
     private void openDashboard() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/MainLayout.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) usernameField.getScene().getWindow();

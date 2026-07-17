@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.parking.controller.DashboardController"
+      spacing="20"
+      styleClass="content-area">
+
+    <padding>
+        <Insets top="24" left="24" right="24" bottom="24"/>
+    </padding>
+
+    <Label fx:id="welcomeLabel"
+           styleClass="page-title"
+           text="Welcome!"/>
+
+    <HBox spacing="16">
+
+        <VBox alignment="CENTER" styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <Label styleClass="stat-label" text="Total Students"/>
+            <Label fx:id="totalStudentsLabel"
+                   styleClass="stat-value"
+                   text="0"/>
+        </VBox>
+
+        <VBox alignment="CENTER" styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <Label styleClass="stat-label" text="Registered Vehicles"/>
+            <Label fx:id="totalVehiclesLabel"
+                   styleClass="stat-value"
+                   text="0"/>
+        </VBox>
+
+        <VBox alignment="CENTER" styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <Label styleClass="stat-label" text="Students Inside"/>
+            <Label fx:id="studentsInsideLabel"
+                   styleClass="stat-value"
+                   text="0"/>
+        </VBox>
+
+        <VBox alignment="CENTER" styleClass="stat-card" HBox.hgrow="ALWAYS">
+            <Label styleClass="stat-label" text="Today's Entries"/>
+            <Label fx:id="todaysEntriesLabel"
+                   styleClass="stat-value"
+                   text="0"/>
+        </VBox>
+
+    </HBox>
+
+    <Label styleClass="hint-label"
+           text="Use the sidebar to manage students, vehicles, parking logs, and reports."
+           wrapText="true"/>
+
+</VBox>

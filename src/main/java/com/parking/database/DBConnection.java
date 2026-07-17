@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 //Connects the application to the MySQL parking system database.
 //Change the database details below to match your own MySQL setup.
-public class DBConnection {
+public class    DBConnection {
 
     private static final String HOST = "localhost";
     private static final String PORT = "3306";

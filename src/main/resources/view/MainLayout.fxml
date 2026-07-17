@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootPane" styleClass="app-root" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.controller.MainLayoutController">
+
+    <left>
+        <VBox prefWidth="200" spacing="8" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20" left="14" right="14" top="20" />
+            </padding>
+            <Label styleClass="sidebar-title" text="PARKING SYSTEM" />
+            <Label text=" " />
+            <Button maxWidth="Infinity" onAction="#showDashboard" styleClass="nav-button" text="Dashboard" />
+            <Button maxWidth="Infinity" onAction="#showStudents" styleClass="nav-button" text="Students" />
+            <Button maxWidth="Infinity" onAction="#showVehicles" styleClass="nav-button" text="Vehicles" />
+            <Button maxWidth="Infinity" onAction="#showParkingLogs" styleClass="nav-button" text="Parking Logs" />
+            <Button maxWidth="Infinity" onAction="#showReports" styleClass="nav-button" text="Reports" />
+            <Button maxWidth="Infinity" onAction="#openScannerKiosk" styleClass="nav-button" text="Scanner Kiosk" />
+            <VBox VBox.vgrow="ALWAYS" />
+            <Button maxWidth="Infinity" onAction="#handleLogout" styleClass="nav-button-danger" text="🚪 Logout" />
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentPane"/>
+    </center>
+
+</BorderPane>
