@@ -2,6 +2,7 @@ package com.parking.controller;
 
 import java.io.IOException;
 
+import com.parking.service.Session;
 import com.parking.util.AlertHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,11 @@ public class MainLayoutController {
 
     @FXML
     public void initialize() {
+        if (!Session.isLoggedIn()) {
+            returnToLogin();
+            return;
+        }
+
         showDashboard();
     }
 
@@ -70,29 +76,47 @@ public class MainLayoutController {
 
     @FXML
     private void handleLogout() {
-        boolean confirm = AlertHelper.showConfirmation("Logout", "Are you sure you want to logout?");
+
+        boolean confirm = AlertHelper.showConfirmation(
+                "Logout",
+                "Are you sure you want to logout?");
+
         if (!confirm) {
             return;
         }
+
         if (Session.getCurrentAdmin() != null) {
             Session.getCurrentAdmin().logout();
         }
+
         Session.clear();
 
+        returnToLogin();
+    }
+
+    private void returnToLogin() {
+
         try {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Login.fxml"));
             Parent root = loader.load();
+
             Stage stage = (Stage) rootPane.getScene().getWindow();
+
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+            scene.getStylesheets().add(
+                    getClass().getResource("/css/style.css").toExternalForm());
+
             stage.setScene(scene);
             stage.setMaximized(false);
             stage.setTitle("Student Vehicle Parking Management System");
             stage.centerOnScreen();
+
         } catch (IOException e) {
             e.printStackTrace();
             AlertHelper.showError("Navigation Error", "Could not return to the Login screen.");
         }
+
     }
 
     private void loadView(String fxml) {

@@ -18,6 +18,7 @@ public class CameraService {
     private Webcam webcam;
     private ExecutorService executor;
     private volatile boolean running = false;
+    private volatile boolean scanning = true;
 
     public boolean start(ImageView imageView, Consumer<String> onQRCodeDetected) {
 
@@ -43,6 +44,7 @@ public class CameraService {
         }
         if (!webcam.isOpen()){
             webcam.open();
+            System.out.println("Camera is opened");
         }
 
         running = true;
@@ -53,49 +55,54 @@ public class CameraService {
 
             while (running) {
 
+               // System.out.println("Loop running");
+
                 BufferedImage frame = webcam.getImage();
 
+                // Camera may not be ready yet
+                if (frame == null) {
+                    try {
+                        Thread.sleep(33);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
+                    continue;
+                }
+
+                // Save frame for debugging
                 try {
-                    javax.imageio.ImageIO.write(frame, "png", new java.io.File("camera_test.png"));
+                    javax.imageio.ImageIO.write(frame, "png",
+                            new java.io.File("lastFrame.png"));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                if (frame != null) {
-                    try {
-                        javax.imageio.ImageIO.write(frame, "png",
-                                new java.io.File("lastFrame.png"));
-                    } catch (Exception ignored) {
-                    }
-                    // Show camera preview
-                    Image image = SwingFXUtils.toFXImage(frame, null);
+                // Show camera preview
+                Image image = SwingFXUtils.toFXImage(frame, null);
 
-                    Platform.runLater(() ->
-                            imageView.setImage(image));
+                Platform.runLater(() ->
+                        imageView.setImage(image));
 
-                    // Try to detect QR Code
+                // Detect QR
+
+                if (scanning) {
                     String qrText = QRScanner.decodeQR(frame);
 
                     if (qrText != null) {
+
+                        scanning = false;
                         System.out.println("QR FOUND: " + qrText);
-                        Platform.runLater(() -> onQRCodeDetected.accept(qrText));
-                    }
 
-                    if (qrText != null) {
-                        System.out.println("QR Found: " + qrText);
+                        Platform.runLater(() ->
+                                onQRCodeDetected.accept(qrText));
 
-                        Platform.runLater(() -> onQRCodeDetected.accept(qrText));
-
-                        break;
                     }
                 }
-
                 try {
                     Thread.sleep(33);
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
-
             }
 
         });
@@ -124,6 +131,12 @@ public class CameraService {
         }
 
         return null;
+    }
+
+    public void resumeScanning(){
+        scanning = true;
+
+
     }
 
 }

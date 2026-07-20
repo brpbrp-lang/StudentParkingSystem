@@ -17,16 +17,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 
-/**
- * Drives the Scanner Kiosk screen.
- *
- * A hardware USB QR scanner behaves like a keyboard: it "types" the encoded text into
- * whatever field has focus, followed by an Enter keystroke. qrInputField below stays
- * focused at all times and its onAction (triggered by Enter) runs the verification chain:
- *
- *   verifyQR -> verifyStudent -> verifyRegisteredVehicle -> checkActiveParkingLog
- *     -> recordTimeIn/recordTimeOut -> openGate -> display result -> reset scanner
- */
+
+//verifyQR -> verifyStudent -> verifyRegisteredVehicle -> checkActiveParkingLog
+//      -> recordTimeIn/recordTimeOut -> openGate -> display result -> reset scanner
 public class ScannerController {
 
     @FXML private TextField qrInputField;
@@ -145,6 +138,7 @@ public class ScannerController {
         qrInputField.clear();
         setStatus("Ready to Scan", "ready-status");
         detailLabel.setText("Scan your Student QR Code to continue.");
+        cameraService.resumeScanning();
         qrInputField.requestFocus();
     }
 

@@ -3,6 +3,7 @@ package com.parking.controller;
 import com.parking.database.DBConnection;
 import com.parking.service.ParkingService;
 
+import com.parking.service.Session;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 

@@ -8,6 +8,10 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
+
+
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -20,8 +24,12 @@ import java.nio.file.StandardCopyOption;
 public class QRPreviewController {
 
 
+
     @FXML
     private VBox rootVBox;
+
+    @FXML
+    private VBox printArea;
 
     @FXML
     private ImageView qrImage;
@@ -30,6 +38,7 @@ public class QRPreviewController {
     private Label studentLabel;
 
     private Student student;
+
 
     //Receives the student information
     public void setData(Student student) {
@@ -72,12 +81,31 @@ public class QRPreviewController {
 
         if (proceed) {
 
-            boolean printed = job.printPage(rootVBox);
+            // Shrink the printable area temporarily
+            double scale = 0.65;
+
+            printArea.setScaleX(scale);
+            printArea.setScaleY(scale);
+
+// Take a snapshot of the smaller layout
+            SnapshotParameters params = new SnapshotParameters();
+            WritableImage snapshot = printArea.snapshot(params, null);
+
+// Restore the original size so the preview window is unchanged
+            printArea.setScaleX(1);
+            printArea.setScaleY(1);
+
+// Create the printable image
+            ImageView printView = new ImageView(snapshot);
+            printView.setPreserveRatio(true);
+
+// Print it
+            boolean printed = job.printPage(printView);
 
             if (printed) {
                 job.endJob();
                 System.out.println("QR printed successfully.");
-            } else {
+            }else {
                 System.out.println("Printing failed.");
             }
 
