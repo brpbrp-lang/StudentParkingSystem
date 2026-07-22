@@ -1,50 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
+<StackPane styleClass="kiosk-root" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.parking.controller.ScannerController">
 
-<StackPane xmlns="http://javafx.com/javafx"
-           xmlns:fx="http://javafx.com/fxml"
-           fx:controller="com.parking.controller.ScannerController"
-           styleClass="kiosk-root">
-
-    <VBox alignment="CENTER" spacing="24" styleClass="kiosk-card" maxWidth="600">
+    <VBox alignment="CENTER" maxWidth="600" spacing="24" styleClass="kiosk-card">
         <padding>
-            <Insets top="50" bottom="50" left="50" right="50"/>
+            <Insets bottom="50" left="50" right="50" top="50" />
         </padding>
 
-        <Label text="🅿️ SCANNER KIOSK" styleClass="kiosk-title"/>
+        <Label styleClass="kiosk-title" text="SCANNER KIOSK" />
 
         <VBox alignment="CENTER" spacing="10" styleClass="kiosk-scan-area">
 
-            <ImageView fx:id="cameraView"
-                       fitWidth="500"
-                       fitHeight="320"
-                       preserveRatio="true"/>
+            <ImageView fx:id="cameraView" fitHeight="320" fitWidth="500" preserveRatio="true" />
 
-            <Label text="Point the QR Code toward the camera"
-                   styleClass="kiosk-instruction"/>
+            <Label styleClass="kiosk-instruction" text="Point the QR Code toward the camera" />
 
         </VBox>
 
 
-        <Label fx:id="statusLabel" text="Ready to Scan" styleClass="ready-status kiosk-status"/>
-        <Label fx:id="detailLabel" text="Scan your Student QR Code to continue." wrapText="true" styleClass="kiosk-detail"/>
+        <Label fx:id="statusLabel" styleClass="ready-status kiosk-status" text="Ready to Scan" />
+        <Label fx:id="detailLabel" styleClass="kiosk-detail" text="Scan your Student QR Code to continue." wrapText="true" />
 
         <!-- Hidden-in-plain-sight input: a USB QR scanner acts like a keyboard and types
              here automatically, followed by Enter. Kept visible + focused for kiosk operators
              who may need to type an ID manually as a fallback. -->
-        <TextField fx:id="qrInputField"
-                   promptText="Scan QR code here..."
-                   onAction="#handleScan"
-                   styleClass="kiosk-input"
-                   visible="false"
-                   managed="false"/>
+        <TextField fx:id="qrInputField" managed="false" onAction="#handleScan" promptText="Scan QR code here..." styleClass="kiosk-input" visible="false" />
     </VBox>
 
 </StackPane>
