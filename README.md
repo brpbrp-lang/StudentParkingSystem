@@ -430,15 +430,15 @@ Promotes code reuse through inheritance, ensures a consistent authentication pro
 
 ## Class Diagram
 
-![Class Diagram](docs/uml/class-diagram.png)
+![Class Diagram](docs/uml/classdiagram.png)
 
 ## Sequence Diagram
 
-![Sequence Diagram](docs/uml/sequence-diagram.png)
+![Sequence Diagram](docs/uml/sequencediagram.png)
 
 ## Activity Diagram
 
-![Activity Diagram](docs/uml/activity-diagram.png)
+![Activity Diagram](docs/uml/activity diagram.png)
 
 #  Developed By
 
