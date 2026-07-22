@@ -438,7 +438,7 @@ Promotes code reuse through inheritance, ensures a consistent authentication pro
 
 ## Activity Diagram
 
-![Activity Diagram](docs/uml/activity diagram.png)
+![Activity Diagram](docs/uml/activitydiagram.png)
 
 #  Developed By
 
