@@ -426,7 +426,7 @@ Promotes code reuse through inheritance, ensures a consistent authentication pro
 
 ## Use Case Diagram
 
-![Use Case](docs/uml/use-case.png)
+![Use Case](docs/uml/useCasediagram.png)
 
 ## Class Diagram
 
