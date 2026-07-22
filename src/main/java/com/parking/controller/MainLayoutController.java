@@ -88,6 +88,7 @@ public class MainLayoutController {
         }
 
         parkingFacade.logout();
+        returnToLogin();
     }
 
     private void returnToLogin() {
