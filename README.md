@@ -422,24 +422,6 @@ The abstract `User` class defines the authentication operations through the abst
 
 Promotes code reuse through inheritance, ensures a consistent authentication process, and simplifies the addition of future user roles.
 
-# UML Diagrams
-
-## Use Case Diagram
-
-![Use Case](docs/uml/use-case.png)
-
-## Class Diagram
-
-![Class Diagram](docs/uml/class-diagram.png)
-
-## Sequence Diagram
-
-![Sequence Diagram](docs/uml/sequence-diagram.png)
-
-## Activity Diagram
-
-![Activity Diagram](docs/uml/activity-diagram.png)
-
 #  Developed By
 
 **John Emmanuel B. Montemayor**
