@@ -383,25 +383,22 @@ The `DBConnection` class maintains a single shared database connection. Before c
 
 ## Structural Design Pattern
 
-### Model-View-Controller (MVC)
+### Facade Pattern
 
-### Components
+### Class
 
-- Model
-- View
-- Controller
+- ParkingFacade
 
 ### Description
 
-The application follows the Model-View-Controller (MVC) architectural pattern.
-
-- **Model** contains application data such as `Student`, `Vehicle`, `Administrator`, and `ParkingLog`.
-- **View** contains the JavaFX FXML user interfaces.
-- **Controller** processes user interaction and communicates with the service layer.
+The ParkingFacade class provides a single interface for accessing the system's core functionalities. It handles requests from the controllers and coordinates operations such as administrator authentication, student and vehicle management, QR code generation, parking entry and exit recording, and report generation by communicating with the appropriate service classes.
 
 ### Benefit
 
-Separates the user interface from business logic, making the application easier to maintain, organize, and extend.
+- Simplifies communication between controllers and service classes.
+- Reduces coupling between the user interface and the business logic.
+- Improves code organization and maintainability.
+- Makes the application easier to extend with additional features.
 
 ---
 
