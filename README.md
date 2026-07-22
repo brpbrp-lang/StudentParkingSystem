@@ -292,20 +292,6 @@ The QR Code always contains the Student ID, allowing quick identification at the
 
 ---
 
-# Future Enhancements
-
-- QR Code Printing
-- Multi-Administrator Accounts
-- Camera Selection (Front/Rear/USB)
-- Parking Slot Monitoring
-- Email QR Codes to Students
-- Backup & Restore Database
-- Cloud Database Integration
-- Gate Hardware Integration
-- Student Mobile Application
-
----
-
 #  Developed By
 
 **John Emmanuel B. Montemayor**
