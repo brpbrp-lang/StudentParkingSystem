@@ -31,7 +31,7 @@ public class ScannerController {
     private final CameraService cameraService = new CameraService();
     private final Gate gate = new Gate();
 
-
+    private volatile boolean processingScan = false;
 
     @FXML
     public void initialize() {
@@ -41,11 +41,8 @@ public class ScannerController {
 
         Platform.runLater(() -> {
 
-            boolean opened = cameraService.start(cameraView, qrCode -> {
+            boolean opened = cameraService.start(cameraView, this::processScan);
 
-                processScan(qrCode);
-
-            });
             if (opened) {
 
                 setStatus("Ready to Scan", "success-status");
@@ -55,6 +52,16 @@ public class ScannerController {
 
                 setStatus("Camera Error", "error-status");
                 detailLabel.setText("No webcam detected.");
+
+            }
+
+        });
+
+        cameraView.sceneProperty().addListener((obs, oldScene, newScene) -> {
+
+            if (newScene != null) {
+
+                newScene.getWindow().setOnHidden(e -> cameraService.stop());
 
             }
 
@@ -77,7 +84,16 @@ public class ScannerController {
 
 
 
-    private void processScan(String qrCode) {
+    private synchronized void processScan(String qrCode) {
+        System.out.println(
+                "processScan() called: " + qrCode +
+                        " | Thread = " + Thread.currentThread().getName()
+        );
+        if (processingScan)
+            return;
+
+        processingScan = true;
+
         // Step 1: verify QR code
         Student student = authService.verifyQR(qrCode);
         if (student == null) {
@@ -128,17 +144,25 @@ public class ScannerController {
     }
 
     private void scheduleReset() {
-        PauseTransition pause = new PauseTransition(Duration.seconds(3));
+
+        PauseTransition pause = new PauseTransition(Duration.seconds(5));
+
         pause.setOnFinished(e -> resetScanner());
+
         pause.play();
     }
 
     private void resetScanner() {
+
         gate.closeGate();
+
         qrInputField.clear();
+
+        processingScan = false;
+
         setStatus("Ready to Scan", "ready-status");
-        detailLabel.setText("Scan your Student QR Code to continue.");
-        cameraService.resumeScanning();
+        detailLabel.setText("Point your Student QR Code toward the camera.");
+
         qrInputField.requestFocus();
     }
 
@@ -147,4 +171,6 @@ public class ScannerController {
         statusLabel.getStyleClass().add(styleClass);
         statusLabel.setText(text);
     }
+
+
 }

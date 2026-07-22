@@ -82,7 +82,7 @@ public class QRPreviewController {
         if (proceed) {
 
             // Shrink the printable area temporarily
-            double scale = 0.65;
+            double scale = 0.85;
 
             printArea.setScaleX(scale);
             printArea.setScaleY(scale);

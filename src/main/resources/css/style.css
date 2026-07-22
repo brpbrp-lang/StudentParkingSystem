@@ -1,13 +1,15 @@
-/* ===== Color palette =====
-   Primary:   #2563eb (blue)
-   Dark:      #1e293b
-   Success:   #16a34a
-   Danger:    #dc2626
-   Background:#f1f5f9
+/* ===== CIT-U Theme =====
+   Primary:    #7B1E23 (Maroon)
+   Dark:       #5A1519
+   Gold:       #D4A017
+   Background: #F7F7F7
+   Card:       #FFFFFF
+   Success:    #2E7D32
+   Danger:     #C62828
 */
 
 .login-root {
-    -fx-background-color: linear-gradient(to bottom right, #1e293b, #2563eb);
+    -fx-background-color: linear-gradient(to bottom right, #7B1E23, #A52A2A);
 }
 
 .login-card {
@@ -20,26 +22,26 @@
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
-    -fx-text-fill: #1e293b;
+    -fx-text-fill: #7B1E23;
 }
 
 .login-subtitle {
     -fx-font-size: 13px;
-    -fx-text-fill: #64748b;
+    -fx-text-fill: #666666;
 }
 
 .hint-label {
     -fx-font-size: 11px;
-    -fx-text-fill: #94a3b8;
+    -fx-text-fill: #888888;
 }
 
 .error-label {
-    -fx-text-fill: #dc2626;
+    -fx-text-fill: #C62828;
     -fx-font-size: 12px;
 }
 
 .primary-button {
-    -fx-background-color: #2563eb;
+    -fx-background-color: #7B1E23;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 6;
@@ -48,11 +50,11 @@
 }
 
 .primary-button:hover {
-    -fx-background-color: #1d4ed8;
+    -fx-background-color: #5A1519;
 }
 
 .danger-button {
-    -fx-background-color: #dc2626;
+    -fx-background-color: #C62828;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 6;
@@ -61,15 +63,15 @@
 }
 
 .danger-button:hover {
-    -fx-background-color: #b91c1c;
+    -fx-background-color: #8E0000;
 }
 
 .app-root {
-    -fx-background-color: #f1f5f9;
+    -fx-background-color: #F7F7F7;
 }
 
 .sidebar {
-    -fx-background-color: #1e293b;
+    -fx-background-color: #7B1E23;
 }
 
 .sidebar-title {
@@ -80,7 +82,7 @@
 
 .nav-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #cbd5e1;
+    -fx-text-fill: #F5F5F5;
     -fx-font-size: 13px;
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 10 10 10 10;
@@ -89,13 +91,13 @@
 }
 
 .nav-button:hover {
-    -fx-background-color: #334155;
-    -fx-text-fill: white;
+    -fx-background-color: #D4A017;
+    -fx-text-fill: #7B1E23;
 }
 
 .nav-button-danger {
     -fx-background-color: transparent;
-    -fx-text-fill: #f87171;
+    -fx-text-fill: #FFD6D6;
     -fx-font-size: 13px;
     -fx-alignment: CENTER_LEFT;
     -fx-padding: 10 10 10 10;
@@ -104,24 +106,24 @@
 }
 
 .nav-button-danger:hover {
-    -fx-background-color: #7f1d1d;
+    -fx-background-color: #C62828;
     -fx-text-fill: white;
 }
 
 .content-area {
-    -fx-background-color: #f1f5f9;
+    -fx-background-color: #F7F7F7;
 }
 
 .page-title {
     -fx-font-size: 22px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1e293b;
+    -fx-text-fill: #7B1E23;
 }
 
 .section-title {
     -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-text-fill: #334155;
+    -fx-text-fill: #5A1519;
 }
 
 .stat-card {
@@ -133,13 +135,13 @@
 
 .stat-label {
     -fx-font-size: 12px;
-    -fx-text-fill: #64748b;
+    -fx-text-fill: #777777;
 }
 
 .stat-value {
     -fx-font-size: 28px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2563eb;
+    -fx-text-fill: #D4A017;
 }
 
 .form-card {
@@ -152,7 +154,7 @@
 /* ===== Scanner Kiosk ===== */
 
 .kiosk-root {
-    -fx-background-color: linear-gradient(to bottom right, #0f172a, #1e3a8a);
+    -fx-background-color: linear-gradient(to bottom right, #7B1E23, #5A1519);
 }
 
 .kiosk-card {
@@ -164,16 +166,16 @@
 .kiosk-title {
     -fx-font-size: 22px;
     -fx-font-weight: bold;
-    -fx-text-fill: #1e293b;
+    -fx-text-fill: #7B1E23;
 }
 
 .kiosk-scan-area {
-    -fx-background-color: #f1f5f9;
+    -fx-background-color: #FFFDF5;
     -fx-background-radius: 10;
-    -fx-border-color: #cbd5e1;
+    -fx-border-color: #D4A017;
     -fx-border-style: dashed;
     -fx-border-radius: 10;
-    -fx-border-width: 2;
+    -fx-border-width: 3;
 }
 
 .kiosk-icon {
@@ -181,7 +183,7 @@
 }
 
 .kiosk-instruction {
-    -fx-text-fill: #64748b;
+    -fx-text-fill: #666666;
 }
 
 .kiosk-status {
@@ -190,7 +192,7 @@
 }
 
 .kiosk-detail {
-    -fx-text-fill: #475569;
+    -fx-text-fill: #555555;
     -fx-text-alignment: center;
 }
 
@@ -200,13 +202,13 @@
 }
 
 .ready-status {
-    -fx-text-fill: #2563eb;
+    -fx-text-fill: #7B1E23;
 }
 
 .error-status {
-    -fx-text-fill: #dc2626;
+    -fx-text-fill: #C62828;
 }
 
 .success-status {
-    -fx-text-fill: #16a34a;
+    -fx-text-fill: #2E7D32;
 }
