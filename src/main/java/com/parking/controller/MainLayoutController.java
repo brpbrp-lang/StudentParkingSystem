@@ -2,7 +2,7 @@ package com.parking.controller;
 
 import java.io.IOException;
 
-import com.parking.service.Session;
+import com.parking.service.ParkingFacade;
 import com.parking.util.AlertHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,9 +21,11 @@ public class MainLayoutController {
     @FXML
     private StackPane contentPane;
 
+    private final ParkingFacade parkingFacade = new ParkingFacade();
+
     @FXML
     public void initialize() {
-        if (!Session.isLoggedIn()) {
+        if (!parkingFacade.isLoggedIn())  {
             returnToLogin();
             return;
         }
@@ -85,13 +87,7 @@ public class MainLayoutController {
             return;
         }
 
-        if (Session.getCurrentAdmin() != null) {
-            Session.getCurrentAdmin().logout();
-        }
-
-        Session.clear();
-
-        returnToLogin();
+        parkingFacade.logout();
     }
 
     private void returnToLogin() {

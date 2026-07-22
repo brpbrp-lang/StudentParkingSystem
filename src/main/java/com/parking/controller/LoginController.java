@@ -1,7 +1,7 @@
 package com.parking.controller;
 
 import com.parking.model.Administrator;
-import com.parking.service.AuthenticationService;
+import com.parking.service.ParkingFacade;
 import com.parking.service.Session;
 import com.parking.util.AlertHelper;
 
@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginController {
 
@@ -27,7 +28,7 @@ public class LoginController {
     @FXML
     private Label errorLabel;
 
-    private final AuthenticationService authService = new AuthenticationService();
+    private final ParkingFacade parkingFacade = new ParkingFacade();
 
     @FXML
     private void handleLogin() {
@@ -39,7 +40,7 @@ public class LoginController {
             return;
         }
 
-        Administrator admin = authService.authenticate(username, password);
+        Administrator admin = parkingFacade.login(username, password);
         if (admin == null) {
             errorLabel.setText("Invalid username or password.");
             return;
@@ -57,7 +58,7 @@ public class LoginController {
 
             Stage stage = (Stage) usernameField.getScene().getWindow();
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+            scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/css/style.css")).toExternalForm());
 
             stage.setScene(scene);
             stage.setTitle("Student Vehicle Parking Management System - Dashboard");

@@ -5,9 +5,10 @@ import com.parking.model.Gate;
 import com.parking.model.ParkingLog;
 import com.parking.model.Student;
 import com.parking.model.Vehicle;
-import com.parking.service.AuthenticationService;
+
 import com.parking.service.CameraService;
-import com.parking.service.ParkingService;
+import com.parking.service.ParkingFacade;
+
 
 import javafx.scene.image.ImageView;
 import javafx.animation.PauseTransition;
@@ -26,8 +27,7 @@ public class ScannerController {
     @FXML private Label statusLabel;
     @FXML private Label detailLabel;
 
-    private final AuthenticationService authService = new AuthenticationService();
-    private final ParkingService parkingService = new ParkingService();
+    private final ParkingFacade parkingFacade = new ParkingFacade();
     private final CameraService cameraService = new CameraService();
     private final Gate gate = new Gate();
 
@@ -95,7 +95,7 @@ public class ScannerController {
         processingScan = true;
 
         // Step 1: verify QR code
-        Student student = authService.verifyQR(qrCode);
+        Student student = parkingFacade.verifyStudent(qrCode);
         if (student == null) {
             setStatus("Invalid QR Code", "error-status");
             detailLabel.setText("No matching student record for this code.");
@@ -104,7 +104,7 @@ public class ScannerController {
         }
 
         // Step 2: verify registered vehicle
-        Vehicle vehicle = authService.verifyVehicle(student.getStudentID());
+        Vehicle vehicle = parkingFacade.verifyVehicle(student.getStudentID());
         if (vehicle == null) {
             setStatus("Vehicle Not Registered", "error-status");
             detailLabel.setText(student.getName() + " has no registered vehicle.");
@@ -113,15 +113,15 @@ public class ScannerController {
         }
 
         // Step 3: check active parking log (already inside?)
-        ParkingLog activeLog = authService.checkActiveEntry(student.getStudentID());
+        ParkingLog activeLog = parkingFacade.checkActiveEntry(student.getStudentID());
 
         boolean success;
         String action;
         if (activeLog != null) {
-            success = parkingService.recordExit(activeLog.getLogID());
+            success = parkingFacade.recordExit(activeLog.getLogID());
             action = "EXIT";
         } else {
-            success = parkingService.recordEntry(student.getStudentID(), vehicle.getVehicleID());
+            success = parkingFacade.recordEntry(student.getStudentID(), vehicle.getVehicleID());
             action = "ENTRY";
         }
 
