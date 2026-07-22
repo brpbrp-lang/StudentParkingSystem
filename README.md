@@ -292,19 +292,135 @@ The QR Code always contains the Student ID, allowing quick identification at the
 
 ---
 
-# Future Enhancements
+# User Session Management (Java Serialization)
 
-- QR Code Printing
-- Multi-Administrator Accounts
-- Camera Selection (Front/Rear/USB)
-- Parking Slot Monitoring
-- Email QR Codes to Students
-- Backup & Restore Database
-- Cloud Database Integration
-- Gate Hardware Integration
-- Student Mobile Application
+The system implements **Java Serialization** to manage administrator sessions.
+
+After a successful login, the authenticated `Administrator` object is serialized and stored in:
+
+```
+session.dat
+```
+
+The serialized file maintains the administrator's session while navigating through different modules of the system.
+
+Upon logout:
+
+- The administrator session is cleared.
+- The `session.dat` file is automatically deleted.
+- The user is redirected back to the Login screen.
+
+Java Serialization is implemented using Java's `ObjectOutputStream` and `ObjectInputStream` within the `Session` service class.
 
 ---
+
+# SOLID Design Principles Applied
+
+## 1. Single Responsibility Principle (SRP)
+
+### Classes
+
+- AuthenticationService
+- ParkingService
+- QRService
+- CameraService
+- Session
+
+### Description
+
+Each class is responsible for only one specific task.
+
+- `AuthenticationService` handles administrator authentication.
+- `ParkingService` manages parking operations.
+- `QRService` generates QR Codes.
+- `CameraService` handles webcam initialization and QR scanning.
+- `Session` manages administrator sessions using Java Serialization.
+
+### Benefit
+
+Separating responsibilities makes the application easier to maintain, debug, test, and extend.
+
+---
+
+## 2. Liskov Substitution Principle (LSP)
+
+### Classes
+
+- User
+- Administrator
+
+### Description
+
+The `Administrator` class extends the abstract `User` class by implementing the `login()` and `logout()` methods. Because of this, an `Administrator` object can be substituted wherever a `User` object is expected without affecting the application's behavior.
+
+### Benefit
+
+This promotes code reuse and allows future user types to be added without modifying existing code.
+
+---
+
+# Design Patterns Applied
+
+## Creational Design Pattern
+
+### Singleton Pattern
+
+**Class**
+
+- DBConnection
+
+### Description
+
+The `DBConnection` class maintains a single shared database connection. Before creating a new connection, it checks whether an existing one is already available and reuses it when possible.
+
+### Benefit
+
+- Prevents unnecessary database connections.
+- Centralizes database access.
+- Improves resource management.
+
+---
+
+## Structural Design Pattern
+
+### Model-View-Controller (MVC)
+
+### Components
+
+- Model
+- View
+- Controller
+
+### Description
+
+The application follows the Model-View-Controller (MVC) architectural pattern.
+
+- **Model** contains application data such as `Student`, `Vehicle`, `Administrator`, and `ParkingLog`.
+- **View** contains the JavaFX FXML user interfaces.
+- **Controller** processes user interaction and communicates with the service layer.
+
+### Benefit
+
+Separates the user interface from business logic, making the application easier to maintain, organize, and extend.
+
+---
+
+## Behavioral Design Pattern
+
+### Template Method Pattern
+
+### Classes
+
+- User
+- Administrator
+
+### Description
+
+The abstract `User` class defines the authentication operations through the abstract methods `login()` and `logout()`, while the `Administrator` class provides their concrete implementations.
+
+### Benefit
+
+Promotes code reuse through inheritance, ensures a consistent authentication process, and simplifies the addition of future user roles.
 
 #  Developed By
 

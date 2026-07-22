@@ -4,9 +4,7 @@ import com.parking.model.Administrator;
 
 import java.io.*;
 
-/**
- * Manages the current administrator session using Java Serialization.
- */
+
 public final class Session {
 
     private static Administrator currentAdmin;
@@ -16,9 +14,7 @@ public final class Session {
     private Session() {
     }
 
-    /**
-     * Returns the currently logged-in administrator.
-     */
+    
     public static Administrator getCurrentAdmin() {
 
         // Return from memory if already loaded
@@ -45,9 +41,7 @@ public final class Session {
         return null;
     }
 
-    /**
-     * Saves the administrator into session.dat
-     */
+    
     public static void setCurrentAdmin(Administrator admin) {
 
         currentAdmin = admin;
@@ -67,9 +61,7 @@ public final class Session {
         }
     }
 
-    /**
-     * Clears the current session.
-     */
+   
     public static void clear() {
 
         currentAdmin = null;
@@ -90,9 +82,7 @@ public final class Session {
 
 
 
-    /**
-     * Checks whether a session exists.
-     */
+    
     public static boolean isLoggedIn() {
         return getCurrentAdmin() != null;
     }
